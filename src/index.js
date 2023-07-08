@@ -1,0 +1,16 @@
+const express = require('express');
+const cors = require('cors');
+const { json, urlencoded } = require('body-parser');
+
+const env = require('./config/env');
+const response = require('./helpers/response');
+
+const app = express();
+
+app.use(cors({credentials: true, origin: true}));
+app.use(json());
+app.use(response);
+
+app.listen(env.port, function() {
+    console.log('Server is running on port ', env.port);
+})
